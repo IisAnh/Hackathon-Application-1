@@ -57,7 +57,57 @@
                         <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
                         <button type="button" class="btn btn-dark" name="load_data" id="load_data">Load Data</button>
                     </div>
-                    <div id="employee_table"></div>
+
+                    <form action="searchItemResults.php" method="post">
+                        <div class="d-flex flex-row flex-fill">
+                          <div class="d-flex flex-column flex-fill">
+                            <div class="input-group mb-3">
+                              <div class="input-group-prepend">
+                                <label class="input-group-text" for="inputGroupSelect01">Province</label>
+                              </div>
+                              <select class="custom-select" name="inputGroupSelect01" id="inputGroupSelect01">
+                                <option value="1" selected>ALL</option>
+                                <option value="2">ONTARIO</option>
+                                <option value="3">QUEBEC</option>
+                                <option value="3">...</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="d-flex flex-column flex-fill">
+                            <div class="input-group mb-3">
+                              <div class="input-group-prepend">
+                                <label class="input-group-text" for="inputGroupSelect02">City</label>
+                              </div>
+                              <select class="custom-select" name="inputGroupSelect02" id="inputGroupSelect02">
+                                <option value="1" selected>ALL</option>
+                                <option value="2">Ottawa</option>
+                                <option value="3">...</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="d-flex flex-column flex-fill">
+                            <div class="input-group mb-3">
+                              <div class="input-group-prepend">
+                                <label class="input-group-text" for="inputGroupSelect03">Category</label>
+                              </div>
+                              <select class="custom-select" name="inputGroupSelect03" id="inputGroupSelect03">
+                                <option value="1" selected>ALL</option>
+                                <option value="2">FROZEN FOODs</option>
+                                <option value="3">...</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="d-flex flex-column flex-fill">
+                            <div class="input-group mb-3">
+                              <input type="text" class="form-control" placeholder="Search Item" aria-label="Search Item" aria-describedby="inputGroupSelect04">
+                              <div class="input-group-append">
+                                <button class="btn btn-dark" type="button" id="inputGroupSelect04">Button</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                  </form>
+                <div id="employee_table"></div>
             </div>
         </div>
     </div>
