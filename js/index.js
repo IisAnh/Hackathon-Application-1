@@ -1,65 +1,40 @@
-$(document).ready(function(){
-    $('#load_data').click(function(){
-     $.ajax({
-      url:"../resources/mock_small_inflation.csv",
-      dataType:"text",
-      success:function(data)
-      {
-       var employee_data = data.split(/\r?\n|\r/);
-       var table_data = '<table class="table table-bordered table-striped">';
-       for(var count = 0; count<employee_data.length; count++)
-       {
-        var cell_data = employee_data[count].split(",");
-        table_data += '<tr>';
-        for(var cell_count=0; cell_count<cell_data.length; cell_count++)
-        {
-         if(count === 0)
-         {
-          table_data += '<th>'+cell_data[cell_count]+'</th>';
-         }
-         else
-         {
-          table_data += '<td>'+cell_data[cell_count]+'</td>';
-         }
-        }
-        table_data += '</tr>';
-       }
-       table_data += '</table>';
-       $('#employee_table').html(table_data);
-      }
-     });
-    });
-    
-   });
+var buildcartcontent;
+var buildsearchcontent;
+var buildpresearchcontent;
 
-   function test() {
-       console.log("What");
-       $.ajax({
-        url:"../resources/mock_small_inflation.csv",
-        dataType:"text",
-        success:function(data)
-        {
-         var employee_data = data.split(/\r?\n|\r/);
-         var table_data = '<table class="table table-bordered table-striped">';
-         for(var count = 0; count<employee_data.length; count++)
-         {
-          var cell_data = employee_data[count].split(",");
-          table_data += '<tr>';
-          for(var cell_count=0; cell_count<cell_data.length; cell_count++)
-          {
-           if(count === 0)
-           {
-            table_data += '<th>'+cell_data[cell_count]+'</th>';
-           }
-           else
-           {
-            table_data += '<td>'+cell_data[cell_count]+'</td>';
-           }
-          }
-          table_data += '</tr>';
-         }
-         table_data += '</table>';
-         $('#employee_table').html(table_data);
-        }
-       });
-   }
+function buildcartpage() {
+    $( "#cartpage" ).addClass("active");
+    $( "#analysispage" ).removeClass("active");
+    $( "#main-body" ).empty();
+    $("#main-body").append(buildpresearchcontent);
+    $("#main-body").append("<div id=\"content\"></div>");
+    $("#main-body").append("<div id=\"employee_table\"></div>");
+}
+
+function analysis() {
+    $( "#main-body" ).empty();
+    $( "#cartpage" ).removeClass("active");
+    $( "#analysispage" ).addClass("active");
+}
+
+function buildcartsearch() {
+    $("#content").empty();
+    $("#content").append(buildsearchcontent);
+}
+
+function savebody() {
+    buildpresearchcontent = $("#presearch").html();
+    buildcartcontent = $("#main-body").html();
+    buildsearchcontent = $("#content").html();
+    $("#content").empty();
+}
+
+function search() {
+    var tempselectprovince = $( "#inputGroupSelect01" ).val();
+    var tempselectcity = $( "#inputGroupSelect02" ).val();
+    var tempselectfood = $( "#inputGroupSelect03" ).val();
+    var tempinput = $( "#inputGroupSelect04input" ).val();
+    $( "#employee_table" ).empty();
+    $( "#employee_table" ).append("<i class=\"fas fa-arrow-circle-right\"></i>&nbsp;Results");
+    $( "#employee_table" ).append("<p>" + tempselectprovince + " " +  tempselectcity + " " + tempselectfood + " " + tempinput + "</p>");
+}
